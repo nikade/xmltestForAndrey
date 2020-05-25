@@ -26,7 +26,7 @@ class MessageXmlSerializerTest {
         val obj = messageXmlSerializer.deserialize(messageToDeserialize)
         assertEquals("+79031234567", obj.sender)
         assertEquals("Всем привет!", obj.message)
-        assertEquals("10:00-22:00", obj.time_period)
+        assertEquals("10:00-22:00", obj.timePeriod)
         assertEquals(4, obj.phones.size)
         assertEquals(
             listOf(

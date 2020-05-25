@@ -1,18 +1,23 @@
 package `in`.edak.xmltest.dto
 
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty
 import java.util.*
 
 
 // Дата класс использвать нельзя, потому что джексону нужен конструктор без парамтеров
 // по этой же причине приходится значения поумолчанию прописывать, не очень красиво
-class SmsMessage(
-    val sender: String = "",
-    val message: String = "",
+class SmsMessage() {
+    var sender: String = ""
+    var message: String = ""
     // имя проперти не очень хорошее, у джексона есть анатоцаии, можно указать нормальное имя проперти,
     // а в анатоции указать какой тэг будет в xml-ке
-    val time_period: String = "",
-    val phones: List<ReceiverPhone> = listOf()
-) {
+    @JacksonXmlProperty(localName = "time_period")
+    var timePeriod: String = ""
+
+    @JacksonXmlElementWrapper(localName = "phones",useWrapping = true)
+    @JacksonXmlProperty(localName = "phone")
+    var phones: List<ReceiverPhone> = listOf()
 
     // equals и hashCode нужны чтобы в тестах assertEquals работал
     override fun equals(other: Any?): Boolean {
@@ -23,7 +28,7 @@ class SmsMessage(
 
         if (sender != other.sender) return false
         if (message != other.message) return false
-        if (time_period != other.time_period) return false
+        if (timePeriod != other.timePeriod) return false
         if (phones != other.phones) return false
 
         return true
@@ -32,7 +37,7 @@ class SmsMessage(
     override fun hashCode(): Int {
         var result = sender.hashCode()
         result = 31 * result + message.hashCode()
-        result = 31 * result + time_period.hashCode()
+        result = 31 * result + timePeriod.hashCode()
         result = 31 * result + phones.hashCode()
         return result
     }
