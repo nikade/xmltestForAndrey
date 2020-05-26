@@ -41,6 +41,10 @@ class SmsMessage() {
         result = 31 * result + phones.hashCode()
         return result
     }
+
+    override fun toString(): String {
+        return "SmsMessage(sender='$sender', message='$message', timePeriod='$timePeriod', phones=$phones)"
+    }
 }
 
 class ReceiverPhone(
@@ -63,6 +67,10 @@ class ReceiverPhone(
         var result = number.hashCode()
         result = 31 * result + uuid.hashCode()
         return result
+    }
+
+    override fun toString(): String {
+        return "ReceiverPhone(number='$number', uuid=$uuid)"
     }
 }
 /*data class ReceiverPhone(

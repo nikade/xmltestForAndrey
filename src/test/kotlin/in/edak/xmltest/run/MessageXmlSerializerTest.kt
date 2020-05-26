@@ -7,17 +7,19 @@ import org.junit.Assert.*
 import java.util.*
 
 class MessageXmlSerializerTest {
-    val messageToDeserialize = "<SmsMessage>\n" +
-            "    <sender>+79031234567</sender>\n" +
-            "    <message>Всем привет!</message>\n" +
-            "    <time_period>10:00-22:00</time_period>\n" +
-            "    <phones>\n" +
-            "       <phone><number>+79132157888</number><uuid>5192ec6a-85cb-11ea-bc55-0242ac130003</uuid></phone>\n" +
-            "       <phone><number>+79132157889</number><uuid>5192ec6a-85cb-11ea-bc55-0242ac130004</uuid></phone>\n" +
-            "       <phone><number>+79132157880</number><uuid>5192ec6a-85cb-11ea-bc55-0242ac130005</uuid></phone>\n" +
-            "       <phone><number>+79132157881</number><uuid>5192ec6a-85cb-11ea-bc55-0242ac130006</uuid></phone>\n" +
-            "    </phones>\n" +
-            "</SmsMessage>"
+    companion object {
+        const val messageToDeserialize = "<SmsMessage>\n" +
+                "    <sender>+79031234567</sender>\n" +
+                "    <message>Всем привет!</message>\n" +
+                "    <time_period>10:00-22:00</time_period>\n" +
+                "    <phones>\n" +
+                "       <phone><number>+79132157888</number><uuid>5192ec6a-85cb-11ea-bc55-0242ac130003</uuid></phone>\n" +
+                "       <phone><number>+79132157889</number><uuid>5192ec6a-85cb-11ea-bc55-0242ac130004</uuid></phone>\n" +
+                "       <phone><number>+79132157880</number><uuid>5192ec6a-85cb-11ea-bc55-0242ac130005</uuid></phone>\n" +
+                "       <phone><number>+79132157881</number><uuid>5192ec6a-85cb-11ea-bc55-0242ac130006</uuid></phone>\n" +
+                "    </phones>\n" +
+                "</SmsMessage>"
+    }
 
     val messageXmlSerializer = MessageXmlSerializer()
 
